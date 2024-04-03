@@ -1,7 +1,7 @@
 const countriesContainer = document.querySelector('.countries-container')
 const filterByRegion = document.querySelector('.filter-by-region')
 const searchInput = document.querySelector('.search-container input')
-const themeChanger = document.querySelector('.theme-changer')
+// const themeChanger = document.querySelector('.theme-changer')
 
 let allCountriesData
 
@@ -29,8 +29,8 @@ function renderCountries(data) {
           <div class="card-text">
               <h3 class="card-title">${country.name.common}</h3>
               <p><b>Population: </b>${country.population.toLocaleString(
-                'en-IN'
-              )}</p>
+      'en-IN'
+    )}</p>
               <p><b>Region: </b>${country.region}</p>
               <p><b>Capital: </b>${country.capital?.[0]}</p>
           </div>
@@ -48,7 +48,31 @@ searchInput.addEventListener('input', (e) => {
 });
 
 
-themeChanger.addEventListener('click', () => {
-  document.body.classList.toggle('dark')
-})
 
+const themeChanger = document.querySelector('.theme-changer');
+
+function ThemeMode() {
+  // themeChanger.addEventListener('click', () => {
+  const currentMode = document.body.classList.contains('dark') ? 'dark' : 'light';
+
+  if (currentMode === 'light') {
+    document.body.classList.add('dark');
+    themeChanger.innerHTML = '<span class="darktheam"><i class="fa-regular fa-moon"></i>&nbsp;&nbsp;Dark Mode</span>';
+    localStorage.setItem('themeMode', 'dark');
+  } else {
+    document.body.classList.remove('dark');
+    themeChanger.innerHTML = '<span class="light"><i class="fa-regular fa-sun"></i>&nbsp;&nbsp;Light Mode</span>';
+    localStorage.setItem('themeMode', 'light');
+  }
+  // });
+
+}
+
+themeChanger.addEventListener('click', ThemeMode);
+
+window.addEventListener('load', () => {
+  const storedMode = localStorage.getItem('themeMode');
+  if (storedMode === 'dark') {
+    ThemeMode();
+  }
+})

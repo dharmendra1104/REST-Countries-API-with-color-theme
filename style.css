@@ -15,7 +15,7 @@ body {
 body.dark {
     --background-color: hsl(207, 26%, 17%); 
     --text-color: white;
-    --elements-color: hsl(209, 23%, 22%);
+    --elements-color: hsl(208, 55%, 27%);
 }
 
 main {
@@ -47,6 +47,10 @@ a {
 
 .theme-changer {
     cursor: pointer;
+}
+
+.darktheam{
+    display: ;
 }
 
 .countries-container {
