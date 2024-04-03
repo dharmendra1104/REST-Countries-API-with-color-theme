@@ -37,6 +37,10 @@ function renderCountries(data) {
   `
     countriesContainer.append(countryCard)
   })
+  if (data.length === 0) {
+    countriesContainer.innerHTML = `<div class="Empty"><h1>Item not found</h1><div>`;
+    return;
+  }
 }
 
 searchInput.addEventListener('input', (e) => {
